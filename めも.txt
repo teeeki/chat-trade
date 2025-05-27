@@ -1,0 +1,2 @@
+DB接続
+psql -U student -d chat-trade
