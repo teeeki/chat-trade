@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign in</title>
-    <!-- Bulma CSS -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -16,7 +14,7 @@
         <div class="field is-grouped is-grouped-centered">
     	    <h1 class="title">Sign in</h1>
         </div>
-    	<form action="/chat-trade" method="post">
+    	<form action="/chat-trade/signin" method="post">
             <div class="container is-fluid">
                 <div class="field">
                     <p class="label">Username</p>
@@ -48,7 +46,7 @@
                 <div class="field is-grouped is-grouped-centered">
                     <p class="control">
                         <button class="button is-success">
-                        Login
+                        Sigi in
                         </button>
                     </p>
                 </div>
@@ -56,7 +54,7 @@
     	</form>
 
         <div class="field is-grouped is-grouped-centered">
-            <button class="button is-light" onclick="location.href=''">
+            <button class="button is-light" onclick="location.href='/chat-trade/signup'">
                 Sing up
             </button>
         </div>
