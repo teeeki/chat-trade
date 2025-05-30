@@ -7,45 +7,63 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 </head>
+
 <body>
 	<header th:replace="/main/header"></header>
     
-	<table border="1">
-	    <tr>
-	        <th>ID</th>
-	        <td th:each="item : ${itemList}" th:text="${item.id}"></td>
-	    </tr>
-	    <tr>
-	        <th>User ID</th>
-	        <td th:each="item : ${itemList}" th:text="${item.userId}"></td>
-	    </tr>
-	    <tr>
-	        <th>Name</th>
-	        <td th:each="item : ${itemList}" th:text="${item.name}"></td>
-	    </tr>
-		
-	    <tr>
-	        <th>Price</th>
-	        <td th:each="item : ${itemList}" th:text="${item.price}"></td>
-	    </tr>
-	    <tr>
-	        <th>Abst</th>
-	        <td th:each="item : ${itemList}" th:text="${item.abst}"></td>
-			
-	    </tr>
-	    <tr>
-	        <th>Description</th>
-	        <td th:each="item : ${itemList}" th:text="${item.description}"></td>
-	    </tr>
-		
-	    <tr>
-	        <th>操作</th>
-	        <td th:each="item : ${itemList}">
-	            <button type="button" class="button is-info" th:onclick="'editItem(' + ${item.id} + ')'">購入</button>
-	        </td>
-	    </tr>
-		
-	</table>
+	<div class="columns is-multiline">
+	    <div th:each="item : ${itemList}" class="column is-4">
+	        <table class="table is-bordered is-fullwidth">
+	            <tbody>
+	                <tr>
+	                    <th>ID</th>
+	                    <td th:text="${item.id}"></td>
+	                </tr>
+	                <tr>
+	                    <th>User ID</th>
+	                    <td th:text="${item.userId}"></td>
+	                </tr>
+	                <tr>
+	                    <th>Name</th>
+	                    <td th:text="${item.name}"></td>
+	                </tr>
+	                <tr>
+	                    <th>Price</th>
+	                    <td th:text="${item.price}"></td>
+	                </tr>
+	                <tr>
+	                    <th>Abst</th>
+	                    <td th:text="${item.abst}"></td>
+	                </tr>
+	                
+	                <tr>
+						<th></th>
+	                    <td>
+							<a th:href="@{/furukari/item/{id}(id=${item.id})}" class="button is-small is-primary">購入</a>	
+	                    </td>
+	                </tr>
+	            </tbody>
+	        </table>
+	    </div>
+	</div>
 
 </body>
 </html>
+
+
+
+<style>
+.item-card {
+    height: 100%;
+}
+
+.item-table {
+    height: calc(100% - 60px); /* ボタン部分を除いた高さ */
+}
+
+.button-section {
+    padding-top: 1rem;
+    border-top: 1px solid #dbdbdb;
+    margin-top: auto;
+}
+</style>
