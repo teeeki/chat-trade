@@ -18,4 +18,4 @@ CREATE TABLE items
 	name TEXT,
 	price INTEGER,
 	img BYTEA
-)
+);
