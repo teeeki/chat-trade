@@ -35,14 +35,11 @@
 	                    <th>Abst</th>
 	                    <td th:text="${item.abst}"></td>
 	                </tr>
-	                <tr>
-	                    <th>Description</th>
-	                    <td th:text="${item.description}"></td>
-	                </tr>
+	                
 	                <tr>
 						<th></th>
 	                    <td>
-	                        <button class="button is-small is-primary" type="button" th:onclick="'editItem(' + ${item.id} + ')'">購入</button>	
+							<a th:href="@{/furukari/item/{id}(id=${item.id})}" class="button is-small is-primary">購入</a>	
 	                    </td>
 	                </tr>
 	            </tbody>
