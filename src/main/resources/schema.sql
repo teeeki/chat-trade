@@ -17,5 +17,7 @@ CREATE TABLE items
 	user_id INTEGER,
 	name TEXT,
 	price INTEGER,
+	abstract TEXT,
+	description TEXT,
 	img BYTEA
 );

@@ -10,5 +10,15 @@
 <body>
 	<header th:replace="/main/header"></header>
     
+	<table>
+		<tr th:each="item : ${itemList}">
+			<td th:text="${item.id}"></td>
+			<td th:text="${item.userId}"></td>
+			<td th:text="${item.name}"></td>
+			<td th:text="${item.price}"></td>
+			<td th:text="${item.abst}"></td>
+			<td th:text="${item.description}"></td>
+		</tr>
+	</table>
 </body>
 </html>

@@ -34,7 +34,8 @@ public class UserController {
 		// 認証の確認（あとで）
 		account.setName(username);
 
-		return "main/itemList";
+		//		return "main/itemList";
+		return "redirect:/furukari/item";
 	}
 
 	@GetMapping("/signup")
