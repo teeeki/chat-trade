@@ -1,7 +1,5 @@
 package com.example.demo.controller;
 
-import jakarta.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.demo.model.Account;
+import com.example.demo.entity.User;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/furukari")
@@ -19,10 +19,11 @@ public class UserController {
 	HttpSession session;
 
 	@Autowired
-	Account account;
+	User account;
 
-	@GetMapping({ "/", "/signin" })
+	@GetMapping({ "/", "/signin", "/logout" })
 	public String showSigninForm() {
+		session.invalidate();
 		return "auth/signin";
 	}
 
@@ -32,7 +33,7 @@ public class UserController {
 			@RequestParam("password") String password) {
 
 		// 認証の確認（あとで）
-		account.setName(username);
+		account.setUsername(username);
 
 		//		return "main/itemList";
 		return "redirect:/furukari/item";
