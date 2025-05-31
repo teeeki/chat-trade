@@ -1,56 +1,64 @@
 package com.example.demo.controller;
 
-import jakarta.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.demo.model.Account;
+import com.example.demo.entity.User;
+import com.example.demo.service.CustomUserDetailService;
 
+import jakarta.servlet.http.HttpSession;
+
+/**
+ * 認証にまつわるログイン、アカウント登録を行うクラス
+ */
 @Controller
 @RequestMapping("/furukari")
 public class UserController {
+
+	private final CustomUserDetailService userDetailService;
 
 	@Autowired
 	HttpSession session;
 
 	@Autowired
-	Account account;
+	User user;
 
-	@GetMapping({ "/", "/signin" })
+	public UserController(CustomUserDetailService userDetailService) {
+		this.userDetailService = userDetailService;
+	}
+
+	@GetMapping({ "/", "/signin", "/logout" })
 	public String showSigninForm() {
+		session.invalidate();
 		return "auth/signin";
 	}
 
 	@PostMapping("/signin")
-	public String signin(
-			@RequestParam("username") String username,
-			@RequestParam("password") String password) {
+	public void signin(@RequestParam("username") String username) {
 
-		// 認証の確認（あとで）
-		account.setName(username);
-
-		//		return "main/itemList";
-		return "redirect:/furukari/item";
+		System.out.println("こんとろーら");
+		// user.setUsername(username);
+		// return "redirect:/furukari/item";
 	}
 
 	@GetMapping("/signup")
-	public String showSignup() {
-
-		// アカウント情報の登録
+	public String showSignup(Model model) {
+		model.addAttribute("user", new User());
 		return "auth/signup";
 	}
 
 	@PostMapping("/signup")
-	public String signup(
-			@RequestParam("newUsername") String newUsername,
-			@RequestParam("newPassword") String newPassword) {
+	public String signup(@ModelAttribute User user) {
+		// @ModelAttributeとテンプレートsignup内が紐づく
+		userDetailService.registerUser(user);
 
-		return "redirect:signin";
+		return "redirect:/auth/signin";
 	}
 
 }

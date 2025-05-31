@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.entity.Item;
-import com.example.demo.model.Account;
+import com.example.demo.entity.User;
 import com.example.demo.repository.ItemRepository;
 
 import jakarta.servlet.http.HttpSession;
@@ -23,13 +24,17 @@ public class ItemController {
 	HttpSession session;
 
 	@Autowired
-	Account account;
+	User user;
 
 	@Autowired
 	ItemRepository itemRepository;
 
 	@GetMapping("/item")
 	public String index(Model model) {
+
+		final String username = SecurityContextHolder.getContext().getAuthentication().getName();
+
+		model.addAttribute("username", username);
 
 		// itemsテーブルから商品を全て抽出
 		List<Item> itemList = itemRepository.findAll();
