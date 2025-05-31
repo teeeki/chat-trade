@@ -24,6 +24,11 @@ public class Item {
 	@Column(name = "abstract")
 	private String abst;
 
+	private String description;
+
+	@Column(name = "img_path")
+	private String imgPath;
+
 	public Item() {
 	}
 
@@ -34,8 +39,6 @@ public class Item {
 		this.abst = abst;
 		this.description = description;
 	}
-
-	private String description;
 
 	public Integer getId() {
 		return id;
@@ -83,5 +86,13 @@ public class Item {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
 	}
 }
