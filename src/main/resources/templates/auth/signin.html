@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +10,11 @@
 </head>
 
 <body>
-	<section class="section">
+    <section class="section">
         <div class="field is-grouped is-grouped-centered">
-    	    <h1 class="title">Sign in</h1>
+            <h1 class="title">Sign in</h1>
         </div>
-    	<form action="/furukari/signin" method="post">
+        <form th:action="@{/furukari/signin}" method="post">
             <div class="container is-fluid">
                 <div class="field">
                     <p class="label">Username</p>
@@ -32,7 +32,7 @@
                 <div class="field">
                     <label class="label">password</label>
                     <div class="control has-icons-left has-icons-right">
-                        
+
                         <input type="password" name="password" class="input is-success" placeholder="password"><br>
                         <span class="icon is-small is-left">
                             <i class="fas fa-lock"></i>
@@ -45,34 +45,34 @@
 
                 <div class="field is-grouped is-grouped-centered">
                     <p class="control">
-                        <button class="button is-success">
-                        Sigi in
+                        <button type="submit" class="button is-success">
+                            Sigi in
                         </button>
                     </p>
                 </div>
             </div>
-    	</form>
+        </form>
 
         <div class="field is-grouped is-grouped-centered">
-            <button class="button is-light" onclick="location.href='/chat-trade/signup'">
+            <button class="button is-light" onclick="location.href='/furukari/signup'">
                 Sing up
             </button>
         </div>
     </section>
 </body>
+
 </html>
 
 <style>
+    .section {
+        margin-top: 150px;
+    }
 
-.section {
-margin-top: 150px;
-}
+    button {
+        margin-top: 30px;
+    }
 
-button {
-margin-top: 30px;
-}
-
-.input {
-    margin-right:40px;
-}
+    .input {
+        margin-right: 40px;
+    }
 </style>

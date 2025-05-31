@@ -18,12 +18,12 @@ public class SecurityConfig {
 
                 .formLogin(form -> form
                         .loginPage("/furukari/signin")
-                        .defaultSuccessUrl("/posts", true)
+                        .defaultSuccessUrl("/furukari/item", true)
                         .permitAll())
                 .logout(logout -> logout
                         .logoutUrl("/furukari/signin?logout")
                         .invalidateHttpSession(true)
-                        .deleteCookies("JSESSEIONID")
+                        .deleteCookies("JSESSION")
                         .permitAll());
 
         return http.build();

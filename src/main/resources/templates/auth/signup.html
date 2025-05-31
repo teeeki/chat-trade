@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,16 +11,16 @@
 
 
 <body>
-	<section class="section">
+    <section class="section">
         <div class="field is-grouped is-grouped-centered">
-    	    <h1 class="title has-text-success">Sign up</h1>
+            <h1 class="title has-text-success">Sign up</h1>
         </div>
-    	<form action="/chat-trade/signup" method="post">
+        <form th:action="@{/furukari/signup}" method="post"> <!-- @ModelAttributeとテンプレートsignup内が紐づく -->
             <div class="container is-fluid">
                 <div class="field">
                     <p class="label">Username</p>
                     <div class="control has-icons-left has-icons-right">
-                        <input type="text" name="newUsername" class="input is-success" placeholder="username"><br>
+                        <input type="text" name="username" class="input is-success" placeholder="username"><br>
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>
@@ -33,8 +33,8 @@
                 <div class="field">
                     <label class="label">password</label>
                     <div class="control has-icons-left has-icons-right">
-                        
-                        <input type="password" name="newPassword" class="input is-success" placeholder="password"><br>
+
+                        <input type="password" name="password" class="input is-success" placeholder="password"><br>
                         <span class="icon is-small is-left">
                             <i class="fas fa-lock"></i>
                         </span>
@@ -43,31 +43,31 @@
                         </span>
                     </div>
                 </div>
-				<div class="field is-grouped is-grouped-centered">
-		            <button class="button is-light">
-		                Sing up
-		            </button>
-		        </div>
-                
-            </div>
-    	</form>
+                <div class="field is-grouped is-grouped-centered">
+                    <button type="submit" class="button is-light">
+                        Sing up
+                    </button>
+                </div>
 
-        
+            </div>
+        </form>
+
+
     </section>
 </body>
+
 </html>
 
 <style>
+    .section {
+        margin-top: 150px;
+    }
 
-.section {
-margin-top: 150px;
-}
+    button {
+        margin-top: 30px;
+    }
 
-button {
-margin-top: 30px;
-}
-
-.input {
-    margin-right:40px;
-}
+    .input {
+        margin-right: 40px;
+    }
 </style>
