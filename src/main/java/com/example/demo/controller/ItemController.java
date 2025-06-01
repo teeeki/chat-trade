@@ -55,4 +55,9 @@ public class ItemController {
 		return "main/itemDetail";
 	}
 
+	@GetMapping("/item/purchase")
+	public String purchase() {
+		return "main/itemPurchase";
+	}
+
 }

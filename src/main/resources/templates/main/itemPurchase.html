@@ -1,0 +1,24 @@
+<!DOCTYPe html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+    <header th:replace="/main/header"></header>
+
+    <div class="has-text-centered" style="margin: 50px 0;">
+        <img alt="" src="/screen_img/購入完了.png" style="width: 600px; height: 600px;">
+    </div>
+
+    <div class="has-text-centered" style="margin: 50px 0;">
+        <a th:href="@{/furukari/item}" class="button is-primary" style="width:90px;">topへ</a>
+    </div>
+</body>
+
+</html>
