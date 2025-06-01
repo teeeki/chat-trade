@@ -1,5 +1,6 @@
 <!DOCTYPe html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
@@ -10,16 +11,47 @@
 
 <body>
 	<header th:replace="/main/header"></header>
-   	
-	<table class="table is-bordered">
-	  <tbody>
 
-		<tr>
-			<th class="is-link">商品名</th>
-			<td th:text="${item.name}">
-		</tr>
 
-	  </tbody>
+	<table class="table is-bordered " style="width:700px; margin: 50px auto;">
+		<tbody>
+
+			<tr>
+				<th class="is-primary"></th>
+				<td><img alt="" th:src="${item.imgPath}" style="width: 200px; height: 300px;"></td>
+			</tr>
+
+			<tr>
+				<th class="is-primary">商品名</th>
+				<td th:text="${item.name}">
+			</tr>
+
+			<tr>
+				<th class="is-primary">出品者</th>
+				<td th:text="${item.userId}">
+			</tr>
+
+			<tr>
+				<th class="is-primary">価格</th>
+				<td th:text="${item.price}">
+			</tr>
+
+			<tr>
+				<th class="is-primary">概要</th>
+				<td th:text="${item.abst}">
+			</tr>
+
+			<tr>
+				<th class="is-primary">詳細</th>
+				<td th:text="${item.description}">
+			</tr>
+
+		</tbody>
 	</table>
+
+	<div class="has-text-centered" style="margin: 50px 0;">
+		<a th:href="@{/furukari/item/purchase}" class="button is-primary" style="width:90px;">購入確定</a>
+	</div>
 </body>
+
 </html>

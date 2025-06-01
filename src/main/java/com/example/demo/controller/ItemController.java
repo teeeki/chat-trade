@@ -39,6 +39,7 @@ public class ItemController {
 		// itemsテーブルから商品を全て抽出
 		List<Item> itemList = itemRepository.findAll();
 		model.addAttribute("itemList", itemList);
+		System.out.println(itemList.get(0).getImgPath());
 
 		return "main/itemList";
 	}
@@ -52,6 +53,11 @@ public class ItemController {
 		Item item = itemRepository.findByid(id);
 		model.addAttribute("item", item);
 		return "main/itemDetail";
+	}
+
+	@GetMapping("/item/purchase")
+	public String purchase() {
+		return "main/itemPurchase";
 	}
 
 }
