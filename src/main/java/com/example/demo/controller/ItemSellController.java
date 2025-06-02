@@ -36,6 +36,9 @@ public class ItemSellController {
     @Autowired
     ItemRepository itemRepository;
 
+    // @Autowired
+    // Item item;
+
     @Autowired
     UserRepository userRepository;
 
@@ -69,7 +72,8 @@ public class ItemSellController {
             @RequestParam("price") Integer price,
             @RequestParam("abst") String abst,
             @RequestParam("description") String description,
-            @RequestParam("img") MultipartFile img) {
+            @RequestParam("img") MultipartFile img,
+            Model model) {
 
         // ログイン中のユーザIDを取得
         final String loginedName = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -85,7 +89,7 @@ public class ItemSellController {
             // 画像ファイルをバイナリデータとして取得
             byte[] content = img.getBytes();
             // 保存
-            Files.write(Paths.get(imgPath), content);
+            Files.write(Paths.get("src/main/resources/static/item_img/" + imgName), content);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -98,9 +102,26 @@ public class ItemSellController {
                 description,
                 imgPath);
 
-        itemRepository.save(item);
+        // セッションに保存（確認画面で使用するため）
+        session.setAttribute("tempItem", item);
+
+        model.addAttribute("item", item);
+        // itemRepository.save(item);
 
         return "sell/itemSellConfirm";
+    }
+
+    @PostMapping("/item/sell/submit")
+    public String itemSellSubmit() {
+        System.out.println("出品確定");
+        System.out.println("出品確定");
+        System.out.println("出品確定");
+
+        // セッションからアイテムを取得
+        Item item = (Item) session.getAttribute("tempItem");
+
+        itemRepository.save(item);
+        return "sell/itemSellSubmit";
     }
 
 }
