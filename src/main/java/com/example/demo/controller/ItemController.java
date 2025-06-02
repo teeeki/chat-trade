@@ -33,7 +33,6 @@ public class ItemController {
 	public String index(Model model) {
 
 		final String username = SecurityContextHolder.getContext().getAuthentication().getName();
-
 		model.addAttribute("username", username);
 
 		// itemsテーブルから商品を全て抽出

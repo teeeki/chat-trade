@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.User;
 import com.example.demo.service.CustomUserDetailService;
@@ -39,13 +38,13 @@ public class UserController {
 		return "auth/signin";
 	}
 
-	@PostMapping("/signin")
-	public void signin(@RequestParam("username") String username) {
+	// @PostMapping("/signin")
+	// public void signin(@RequestParam("username") String username) {
 
-		System.out.println("こんとろーら");
-		// user.setUsername(username);
-		// return "redirect:/furukari/item";
-	}
+	// 	System.out.println("こんとろーら");
+	// 	// user.setUsername(username);
+	// 	// return "redirect:/furukari/item";
+	// }
 
 	@GetMapping("/signup")
 	public String showSignup(Model model) {
