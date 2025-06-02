@@ -48,6 +48,9 @@ public class ItemController {
 			@PathVariable("id") Integer id,
 			Model model) {
 
+		final String username = SecurityContextHolder.getContext().getAuthentication().getName();
+		model.addAttribute("username", username);
+
 		// idから指定商品を抽出
 		Item item = itemRepository.findByid(id);
 		model.addAttribute("item", item);
@@ -55,7 +58,11 @@ public class ItemController {
 	}
 
 	@GetMapping("/item/purchase")
-	public String purchase() {
+	public String purchase(Model model) {
+
+		final String username = SecurityContextHolder.getContext().getAuthentication().getName();
+		model.addAttribute("username", username);
+
 		return "main/itemPurchase";
 	}
 
