@@ -13,7 +13,7 @@
     <header th:replace="/main/header"></header>
 
     <div style="width:700px; margin: 50px auto;">
-        <form th:action="@{/furukari/item/sell}" method="post">
+        <form th:action="@{/furukari/item/sell}" method="post" enctype="multipart/form-data">
             <!-- 出品商品名 -->
             <div class="field">
                 <label class="label">item-name</label>
@@ -46,14 +46,19 @@
                 </div>
             </div>
 
+            <!-- 画像アップロード -->
+            <div class="field">
+                <label class="label">画像</label>
+                <div class="control">
+                    <input name="img" type="file">
+                </div>
+            </div>
+
             <div class="field is-grouped">
                 <div class="control">
                     <button class="button is-link" type="submit">Submit</button>
                 </div>
-                <!-- onclick="location.href='@{/furukari/item/sell}'" -->
-                <!-- <div class="control">
-                    <button class="button is-link is-light">Cancel</button>
-                </div> -->
+
             </div>
         </form>
     </div>

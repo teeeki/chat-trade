@@ -32,12 +32,13 @@ public class Item {
 	public Item() {
 	}
 
-	public Item(Integer userId, String name, Integer price, String abst, String description) {
+	public Item(Integer userId, String name, Integer price, String abst, String description, String imgPath) {
 		this.userId = userId;
 		this.name = name;
 		this.price = price;
 		this.abst = abst;
 		this.description = description;
+		this.imgPath = imgPath;
 	}
 
 	public Integer getId() {
