@@ -14,45 +14,47 @@
         <div class="field is-grouped is-grouped-centered">
             <h1 class="title">Sign in</h1>
         </div>
-        <form th:action="@{/furukari/signin}" method="post">
-            <div class="container is-fluid">
-                <div class="field">
-                    <p class="label">Username</p>
-                    <div class="control has-icons-left has-icons-right">
-                        <input type="text" name="username" class="input is-success" placeholder="username"><br>
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                        </span>
+
+        <div style="width:700px; margin: 50px auto;">
+            <form th:action="@{/furukari/signin}" method="post">
+                <div class="container is-fluid">
+                    <div class="field">
+                        <p class="label">Username</p>
+                        <div class="control has-icons-left has-icons-right">
+                            <input type="text" name="username" class="input is-success" placeholder="username"><br>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">password</label>
+                        <div class="control has-icons-left has-icons-right">
+
+                            <input type="password" name="password" class="input is-success" placeholder="password"><br>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="field is-grouped is-grouped-centered">
+                        <p class="control">
+                            <button type="submit" class="button is-success">
+                                Sigi in
+                            </button>
+                        </p>
                     </div>
                 </div>
-
-                <div class="field">
-                    <label class="label">password</label>
-                    <div class="control has-icons-left has-icons-right">
-
-                        <input type="password" name="password" class="input is-success" placeholder="password"><br>
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-lock"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="field is-grouped is-grouped-centered">
-                    <p class="control">
-                        <button type="submit" class="button is-success">
-                            Sigi in
-                        </button>
-                    </p>
-                </div>
-            </div>
-        </form>
-
+            </form>
+        </div>
         <div class="field is-grouped is-grouped-centered">
             <button class="button is-light" onclick="location.href='/furukari/signup'">
                 Sing up
