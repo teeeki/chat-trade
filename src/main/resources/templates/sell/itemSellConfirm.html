@@ -12,7 +12,46 @@
 <body>
     <header th:replace="/main/header"></header>
 
-    <a href="/furukari/item">top</a>
+    <table class="table is-bordered " style="width:700px; margin: 50px auto;">
+        <tbody>
+
+            <tr>
+                <th class="is-primary"></th>
+                <td><img alt="" th:src="${item.imgPath}" style="width: 200px; height: 300px;"></td>
+            </tr>
+
+            <tr>
+                <th class="is-primary">商品名</th>
+                <td th:text="${item.name}">
+            </tr>
+
+            <tr>
+                <th class="is-primary">出品者</th>
+                <td th:text="${item.userId}">
+            </tr>
+
+            <tr>
+                <th class="is-primary">価格</th>
+                <td th:text="${item.price}">
+            </tr>
+
+            <tr>
+                <th class="is-primary">概要</th>
+                <td th:text="${item.abst}">
+            </tr>
+
+            <tr>
+                <th class="is-primary">詳細</th>
+                <td th:text="${item.description}">
+            </tr>
+
+        </tbody>
+    </table>
+
+    <form th:action="@{/furukari/item/sell/submit}" method="post">
+        <button class="button is-primary" style="width:90px;">出品確定</button>
+    </form>
+    <!-- <a href="/furukari/item/sell/submit">top</a> -->
 </body>
 
 </html>

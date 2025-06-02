@@ -2,11 +2,11 @@ package com.example.demo.controller;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +36,9 @@ public class ItemSellController {
     @Autowired
     ItemRepository itemRepository;
 
+    // @Autowired
+    // Item item;
+
     @Autowired
     UserRepository userRepository;
 
@@ -45,46 +48,52 @@ public class ItemSellController {
      * @return
      */
     @GetMapping("/item/sell")
-    public String itemSellForm() {
+    public String itemSellForm(Model model) {
+
+        final String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        model.addAttribute("username", username);
+
         return "sell/itemListForm";
     }
 
+    /**
+     * 出品処理を担当
+     * テンプレートフォーム（itemListForm.html）から受け取った出品情報をitemテーブルに格納
+     * @param name：商品名
+     * @param price：価格
+     * @param abst：概要
+     * @param description：詳細
+     * @param img：画像
+     * @return：確認画面
+     */
     @PostMapping("/item/sell")
     public String itemSell(
             @RequestParam("name") String name,
             @RequestParam("price") Integer price,
             @RequestParam("abst") String abst,
             @RequestParam("description") String description,
-            @RequestParam("img") MultipartFile img) {
+            @RequestParam("img") MultipartFile img,
+            Model model) {
 
         // ログイン中のユーザIDを取得
         final String loginedName = SecurityContextHolder.getContext().getAuthentication().getName();
         loginedUser = userRepository.findByUsername(loginedName).get();
         Integer userId = loginedUser.getId();
 
-        // 画像を取得
-
-        // String imgName = randomFileName();
-        // System.out.println("--------------------------------");
-        // System.out.println(imgName);
-        // System.out.println("--------------------------------");
         String imgPath = null;
         try {
             // ファイル名
             String imgName = img.getOriginalFilename();
-            System.out.println("--------------------------------");
-            System.out.println(imgName);
             // 保存先パス
             imgPath = "/item_img/" + imgName;
             // 画像ファイルをバイナリデータとして取得
             byte[] content = img.getBytes();
             // 保存
-            // Files.write(Paths.get(imgPath), content);
             Files.write(Paths.get("src/main/resources/static/item_img/" + imgName), content);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(imgPath);
+
         Item item = new Item(
                 userId,
                 name,
@@ -93,22 +102,26 @@ public class ItemSellController {
                 description,
                 imgPath);
 
-        itemRepository.save(item);
+        // セッションに保存（確認画面で使用するため）
+        session.setAttribute("tempItem", item);
+
+        model.addAttribute("item", item);
+        // itemRepository.save(item);
 
         return "sell/itemSellConfirm";
     }
 
-    public String randomFileName() {
-        Random random = new Random();
-        StringBuilder stringBuilder = new StringBuilder();
-        int length = 10; // 生成する文字列の長さ
+    @PostMapping("/item/sell/submit")
+    public String itemSellSubmit() {
+        System.out.println("出品確定");
+        System.out.println("出品確定");
+        System.out.println("出品確定");
 
-        for (int i = 0; i < length; i++) {
-            char randomChar = (char) ('a' + random.nextInt(26)); // aからzまでのランダムな文字を生成
-            stringBuilder.append(randomChar);
-        }
+        // セッションからアイテムを取得
+        Item item = (Item) session.getAttribute("tempItem");
 
-        return stringBuilder.toString() + ".png";
+        itemRepository.save(item);
+        return "sell/itemSellSubmit";
     }
 
 }

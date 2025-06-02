@@ -12,6 +12,11 @@
 <body>
 	<header th:replace="/main/header"></header>
 
+	<div class="field is-grouped is-grouped-centered">
+		<a th:href="@{/furukari/item/sell}" class="button" style="width:100px; margin: 50px auto;"><i
+				class="fa-solid fa-camera"></i></a>
+	</div>
+
 	<div class="columns is-multiline">
 		<div th:each="item : ${itemList}" class="column is-4">
 			<table class="table is-bordered is-fullwidth">
@@ -52,8 +57,6 @@
 			</table>
 		</div>
 	</div>
-
-	<a th:href="@{/furukari/item/sell}" class="button" style="width:90px;"><i class="fa-solid fa-camera"></i></a>
 
 </body>
 
