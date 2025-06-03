@@ -16,3 +16,4 @@ CREATE TABLE items (
 	description TEXT,
 	img_path TEXT
 );
+-- CREATE TABLE tmp (id SERIAL PRIMARY KEY, name TEXT);

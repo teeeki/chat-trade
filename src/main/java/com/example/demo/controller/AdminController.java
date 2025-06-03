@@ -3,9 +3,9 @@ package com.example.demo.controller;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.demo.entity.Tmp;
+import com.example.demo.repository.TmpRepository;
 import com.example.demo.service.UpdateDbService;
 
 @Controller
@@ -21,6 +23,9 @@ public class AdminController {
 
     @Autowired
     UpdateDbService updateDbService;
+
+    @Autowired
+    TmpRepository tmpRepository;
 
     @GetMapping("/admin")
     public String admin(Model model) {
@@ -42,12 +47,11 @@ public class AdminController {
             Model model,
             RedirectAttributes redirectAttributes) {
 
-        model.addAttribute("accept", 1);
-        model.addAttribute("uploaded", 0);
-        redirectAttributes.addAttribute("accept", 1);
-
+        // Tmp tmp = new Tmp();
+        Optional<Tmp> tmp = tmpRepository.findById(1);
+        String username = tmp.get().getName();
         // usersテーブルのレコードを承認済みに更新
-        final String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        // final String username = SecurityContextHolder.getContext().getAuthentication().getName();
         updateDbService.updateUserVerify(username);
 
         return "redirect:/furukari/item/sell";

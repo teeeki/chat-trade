@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.entity.Item;
+import com.example.demo.entity.Tmp;
 import com.example.demo.entity.User;
 import com.example.demo.repository.ItemRepository;
+import com.example.demo.repository.TmpRepository;
 import com.example.demo.repository.UserRepository;
 
 import jakarta.servlet.http.HttpSession;
@@ -36,12 +38,11 @@ public class ItemSellController {
     @Autowired
     ItemRepository itemRepository;
 
-    // @Autowired
-    // Item item;
+    @Autowired
+    TmpRepository tmpRepository;
 
     @Autowired
     UserRepository userRepository;
-    private Integer accept = 0;
 
     /**
      * 出品フォームを表示
@@ -49,18 +50,31 @@ public class ItemSellController {
      * @return
      */
     @GetMapping("/item/sell")
-    public String itemSellForm(
-            // @ModelAttribute(name = "accept") Integer accept,
-            @RequestParam(name = "accept", defaultValue = "0") Integer accept,
-            Model model) {
+    public String itemSellForm() {
 
-        if (accept == 1) {
-            model.addAttribute("accept", 1);
-        }
+        // if (accept == 1) {
+        //     model.addAttribute("accept", 1);
+        // }
+        // final String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        // model.addAttribute("username", username);
+
+        // ユーザ情報を取り出す
         final String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        model.addAttribute("username", username);
+        User user = userRepository.findByUsername(username).get();
 
-        return "sell/itemListForm";
+        // is_verifyがtrueなら出品フォームへ
+        // is_verifyがfalseなら本人確認フォームへ
+        if (user.getIsVerify() == true) {
+            return "sell/itemListForm.html";
+        } else {
+            // userテーブルを確認中に更新
+            Tmp tmp = new Tmp();
+            tmp.setName(username);
+            tmpRepository.save(tmp);
+
+            return "user_verify/userVerifyForm.html";
+        }
+
     }
 
     /**
