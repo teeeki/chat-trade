@@ -13,10 +13,16 @@
     <header th:replace="/main/header"></header>
 
 
-    <div th:if="uploaded">
+    <div th:if="${uploaded == 1}">
         <div style="width:700px; margin: 50px auto;">
             本人確認中です<br>
             少々お待ちください
+        </div>
+    </div>
+
+    <div th:if="${accept == 1}">
+        <div style="width:700px; margin: 50px auto;">
+            本人確認が完了しました
         </div>
     </div>
 

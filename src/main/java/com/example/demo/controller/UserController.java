@@ -38,14 +38,6 @@ public class UserController {
 		return "auth/signin";
 	}
 
-	// @PostMapping("/signin")
-	// public void signin(@RequestParam("username") String username) {
-
-	// 	System.out.println("こんとろーら");
-	// 	// user.setUsername(username);
-	// 	// return "redirect:/furukari/item";
-	// }
-
 	@GetMapping("/signup")
 	public String showSignup(Model model) {
 		model.addAttribute("user", new User());

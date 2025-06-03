@@ -1,0 +1,29 @@
+<!DOCTYPe html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+    root
+    <div th:if="img">
+        <div style="width:700px; margin: 50px auto;">
+            <img alt="" src="/tmp/document.jpg" style="width: 400px; height: 300px;"></td>
+        </div>
+    </div>
+
+    <form th:action="@{/furukari/admin}" method="post">
+        <div style="width:700px; margin: 50px auto;">
+            <label class="checkbox">
+                <input type="checkbox" />
+                Remember me
+            </label><br><br>
+            <button class="button is-link" type="submit">承認</button>
+        </div>
+    </form>
+</body>

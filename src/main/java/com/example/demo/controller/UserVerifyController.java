@@ -30,7 +30,7 @@ public class UserVerifyController {
 
         try {
             // ファイル名
-            String imgName = img.getOriginalFilename();
+            String imgName = "document.jpg";
             // 画像ファイルをバイナリデータとして取得
             byte[] content = img.getBytes();
             // 保存
