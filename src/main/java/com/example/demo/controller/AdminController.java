@@ -42,7 +42,6 @@ public class AdminController {
             Model model,
             RedirectAttributes redirectAttributes) {
 
-        System.out.println("承認");
         model.addAttribute("accept", 1);
         model.addAttribute("uploaded", 0);
         redirectAttributes.addAttribute("accept", 1);
