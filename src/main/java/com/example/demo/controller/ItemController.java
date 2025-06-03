@@ -33,6 +33,10 @@ public class ItemController {
 	public String index(Model model) {
 
 		final String username = SecurityContextHolder.getContext().getAuthentication().getName();
+		// 管理者ユーザは管理者画面へ遷移
+		if (username.equals("root")) {
+			return "redirect:/furukari/admin";
+		}
 		model.addAttribute("username", username);
 
 		// itemsテーブルから商品を全て抽出

@@ -1,0 +1,50 @@
+<!DOCTYPe html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+    <header th:replace="/main/header"></header>
+
+
+    <div th:if="${uploaded == 1}">
+        <div style="width:700px; margin: 50px auto;">
+            本人確認中です<br>
+            少々お待ちください
+        </div>
+    </div>
+
+    <div th:if="${accept == 1}">
+        <div style="width:700px; margin: 50px auto;">
+            本人確認が完了しました
+        </div>
+    </div>
+
+
+    <!-- 本人確認画像アップロード -->
+    <div style="width:700px; margin: 50px auto;">
+        <form th:action="@{/furukari/user-verify}" method="post" enctype="multipart/form-data">
+            <div class="field">
+                <label class="label">本人確認画像の提出</label>
+                <div class="control">
+                    <input name="img" type="file">
+                </div>
+            </div>
+
+            <div class="field is-grouped" style="margin: 50px auto;">
+                <div class="control">
+                    <button class="button is-link" type="submit">提出</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</body>
+
+</html>

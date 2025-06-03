@@ -12,6 +12,17 @@
 <body>
     <header th:replace="/main/header"></header>
 
+    <div class="field is-grouped is-grouped-centered" style="margin: 50px 0;font-size: 30px;">
+        <a href="/furukari/user-verify">本人確認書類の提出へ<i class="fa-solid fa-check"></i></a>
+    </div>
+
+    <div th:if="${accept == 1}">
+        <div class="field is-grouped is-grouped-centered" style="margin: 50px 0;font-size: 30px;">
+            本人確認が完了しました
+        </div>
+    </div>
+
+
     <div style="width:700px; margin: 50px auto;">
         <form th:action="@{/furukari/item/sell}" method="post" enctype="multipart/form-data">
             <!-- 出品商品名 -->

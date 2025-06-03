@@ -4,7 +4,8 @@ DROP TABLE IF EXISTS items;
 CREATE TABLE users (
 	id SERIAL PRIMARY KEY,
 	username TEXT,
-	password TEXT
+	password TEXT,
+	is_verify boolean DEFAULT false
 );
 CREATE TABLE items (
 	id SERIAL PRIMARY KEY,

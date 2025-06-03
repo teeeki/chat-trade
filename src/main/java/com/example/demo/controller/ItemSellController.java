@@ -41,6 +41,7 @@ public class ItemSellController {
 
     @Autowired
     UserRepository userRepository;
+    private Integer accept = 0;
 
     /**
      * 出品フォームを表示
@@ -48,8 +49,14 @@ public class ItemSellController {
      * @return
      */
     @GetMapping("/item/sell")
-    public String itemSellForm(Model model) {
+    public String itemSellForm(
+            // @ModelAttribute(name = "accept") Integer accept,
+            @RequestParam(name = "accept", defaultValue = "0") Integer accept,
+            Model model) {
 
+        if (accept == 1) {
+            model.addAttribute("accept", 1);
+        }
         final String username = SecurityContextHolder.getContext().getAuthentication().getName();
         model.addAttribute("username", username);
 
