@@ -8,7 +8,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,6 +41,7 @@ public class ItemSellController {
 
     @Autowired
     UserRepository userRepository;
+    private Integer accept = 0;
 
     /**
      * 出品フォームを表示
@@ -50,7 +50,8 @@ public class ItemSellController {
      */
     @GetMapping("/item/sell")
     public String itemSellForm(
-            @ModelAttribute(name = "accept") Integer accept,
+            // @ModelAttribute(name = "accept") Integer accept,
+            @RequestParam(name = "accept", defaultValue = "0") Integer accept,
             Model model) {
 
         if (accept == 1) {

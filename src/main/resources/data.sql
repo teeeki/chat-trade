@@ -1,9 +1,9 @@
-INSERT INTO users(username, password)
-VALUES('t-teieki', 'himitu');
-INSERT INTO users(username, password)
-VALUES('aaa', 'ccc');
-INSERT INTO users(username, password)
-VALUES('bbb', 'bbb');
+INSERT INTO users(username, password, is_verify)
+VALUES('t-teieki', 'himitu', FALSE);
+INSERT INTO users(username, password, is_verify)
+VALUES('aaa', 'ccc', FALSE);
+INSERT INTO users(username, password, is_verify)
+VALUES('bbb', 'bbb', FALSE);
 INSERT INTO items(
         user_id,
         name,
