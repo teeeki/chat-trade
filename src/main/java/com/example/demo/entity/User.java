@@ -24,7 +24,7 @@ public class User {
 	private String password;
 
 	@Column(name = "is_verify")
-	private Boolean isVerify;
+	private Boolean isVerify = false;
 
 	public Integer getId() {
 		return id;

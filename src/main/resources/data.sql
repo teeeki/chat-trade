@@ -1,5 +1,9 @@
 INSERT INTO users(username, password, is_verify)
-VALUES('t-teieki', 'himitu', FALSE);
+VALUES(
+        't-teieki',
+        'himitu',
+        FALSE
+    );
 INSERT INTO users(username, password, is_verify)
 VALUES('aaa', 'ccc', FALSE);
 INSERT INTO users(username, password, is_verify)
