@@ -52,12 +52,6 @@ public class ItemSellController {
     @GetMapping("/item/sell")
     public String itemSellForm() {
 
-        // if (accept == 1) {
-        //     model.addAttribute("accept", 1);
-        // }
-        // final String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        // model.addAttribute("username", username);
-
         // ユーザ情報を取り出す
         final String username = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userRepository.findByUsername(username).get();

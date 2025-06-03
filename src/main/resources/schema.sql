@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS items;
+DROP TABLE IF EXISTS tmp;
 -- アカウントテーブル
 CREATE TABLE users (
 	id SERIAL PRIMARY KEY,
@@ -16,4 +17,4 @@ CREATE TABLE items (
 	description TEXT,
 	img_path TEXT
 );
--- CREATE TABLE tmp (id SERIAL PRIMARY KEY, name TEXT);
+CREATE TABLE tmp (id SERIAL PRIMARY KEY, name TEXT);

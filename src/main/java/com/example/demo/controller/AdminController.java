@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,9 +52,10 @@ public class AdminController {
         Optional<Tmp> tmp = tmpRepository.findById(1);
         String username = tmp.get().getName();
         // usersテーブルのレコードを承認済みに更新
-        // final String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        updateDbService.updateUserVerify(username);
+        final String loginedUsername = SecurityContextHolder.getContext().getAuthentication().getName();
+        // updateDbService.updateUserVerify(username);
+        updateDbService.updateUserVerify(loginedUsername);
 
-        return "redirect:/furukari/item/sell";
+        return "admin/admin";
     }
 }
