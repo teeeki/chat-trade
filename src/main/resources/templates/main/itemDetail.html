@@ -11,8 +11,6 @@
 
 <body>
 	<header th:replace="/main/header"></header>
-
-
 	<table class="table is-bordered " style="width:700px; margin: 50px auto;">
 		<tbody>
 
@@ -28,7 +26,7 @@
 
 			<tr>
 				<th class="is-primary">出品者</th>
-				<td th:text="${item.userId}">
+				<td th:text="${username}">
 			</tr>
 
 			<tr>
@@ -49,9 +47,137 @@
 		</tbody>
 	</table>
 
-	<div class="has-text-centered" style="margin: 50px 0;">
-		<a th:href="@{/furukari/item/purchase}" class="button is-primary" style="width:90px;">購入確定</a>
-	</div>
-</body>
+	<body>
+		<section class="section">
+			<div class="container">
+				<!-- チャットエリア -->
+				<div id="room">
+					<div class="box-left">
+						<p class="message-box white">こんにちは</p>
+					</div>
+					<div class="box-right">
+						<p class="message-box green">こんにちは</p>
+					</div>
+				</div>
+
+				<!-- 入力フォーム -->
+				<div class="field has-addons">
+					<div class="control is-expanded">
+						<input id="inputMessage" class="input" type="text" placeholder="メッセージを入力してください">
+					</div>
+					<div class="control">
+						<button id="sendBtn" class="button is-primary">送信</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div class="has-text-centered" style="margin: 50px 0;">
+			<a th:href="@{/furukari/item/purchase}" class="button is-primary" style="width:90px;">購入確定</a>
+		</div>
+	</body>
 
 </html>
+
+
+
+</html>
+
+<script>
+	// （true： 自分が送信/false： 相手が送信） --
+	let isMyself = true;
+	let sendBtn = document.getElementById('sendBtn');
+
+	sendBtn.addEventListener('click', function () {
+		let inputMessage = document.getElementById('inputMessage');
+		let messageText = inputMessage.value;
+		if (messageText == '') {
+			return;
+		}
+
+		let messageBox = createMessageBox();
+		let message = createMessage(messageText);
+		messageBox.appendChild(message);
+
+		let room = document.getElementById('room');
+		room.appendChild(messageBox);
+		inputMessage.value = '';
+
+		// ------- 送信されるたびに送信者を変更 -------
+		if (isMyself) {
+			// 自分が送信者の場合、次の送信者を相手にする
+			isMyself = false;
+		} else {
+			// 相手が送信者の場合、次の送信者を自分にする
+			isMyself = true;
+		}
+
+		function createMessageBox() {
+			let messageBox = document.createElement('div');
+			if (isMyself) {
+				messageBox.classList.add('box-right');
+			} else {
+				messageBox.classList.add('box-left');
+			}
+
+			return messageBox;
+		}
+
+		function createMessage(messageText) {
+			let message = document.createElement('p');
+			message.textContent = messageText;
+			message.classList.add('message-box');
+			// 誰が送信者かチェック
+			if (isMyself) {
+				message.classList.add('green');
+			} else {
+				message.classList.add('white');
+			}
+
+			return message;
+		}
+	})
+
+</script>
+
+
+<style>
+	#room {
+		max-height: 400px;
+		overflow-y: auto;
+		padding: 1rem;
+		border: 1px solid #dbdbdb;
+		border-radius: 6px;
+		background-color: #f5f5f5;
+		margin-bottom: 1rem;
+	}
+
+	.box-left {
+		display: flex;
+		justify-content: flex-start;
+		margin-bottom: 0.5rem;
+	}
+
+	.box-right {
+		display: flex;
+		justify-content: flex-end;
+		margin-bottom: 0.5rem;
+	}
+
+	.message-box {
+		padding: 0.5rem 1rem;
+		border-radius: 12px;
+		max-width: 70%;
+		word-wrap: break-word;
+	}
+
+	.white {
+		background-color: white;
+		color: #363636;
+	}
+
+	.green {
+		background-color: #48c774;
+		color: white;
+	}
+</style>

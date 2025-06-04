@@ -16,3 +16,6 @@
 - https://qiita.com/memorandum0134/items/5c4a741e7e292f6cc9f6 
 - https://www.dropbox.com/scl/fi/afgacha6lcmkpro7no5kp/Spring-_-2_.pdf?rlkey=sswzswcqatl3599nkssdo6nr8&e=1&st=nlesal0k&dl=0 
 - ちょっとclaude
+
+## チャット機能
+https://qiita.com/osakanaaaa/items/60df1768b7a310276beb 

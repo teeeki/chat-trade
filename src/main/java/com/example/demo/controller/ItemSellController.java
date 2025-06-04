@@ -129,7 +129,10 @@ public class ItemSellController {
     }
 
     @PostMapping("/item/sell/submit")
-    public String itemSellSubmit() {
+    public String itemSellSubmit(Model model) {
+
+        final String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        model.addAttribute("username", username);
         System.out.println("出品確定");
         System.out.println("出品確定");
         System.out.println("出品確定");

@@ -13,8 +13,8 @@
 	<header th:replace="/main/header"></header>
 
 	<div class="field is-grouped is-grouped-centered">
-		<a th:href="@{/furukari/item/sell}" class="button" style="width:100px; margin: 50px auto;"><i
-				class="fa-solid fa-camera"></i></a>
+		<button onclick="location.href='/furukari/item/sell'" class="button is-primary is-light"
+			style="width:150px; margin: 50px auto;">出品<i class="fa-solid fa-camera"></i></button>
 	</div>
 
 	<div class="columns is-multiline">
@@ -25,10 +25,7 @@
 						<th>ID</th>
 						<td th:text="${item.id}"></td>
 					</tr>
-					<tr>
-						<th>User ID</th>
-						<td th:text="${item.userId}"></td>
-					</tr>
+
 					<tr>
 						<th>Name</th>
 						<td th:text="${item.name}"></td>
