@@ -54,10 +54,8 @@ public class AdminController {
         Optional<Tmp> tmp = tmpRepository.findById(1);
         String username = tmp.get().getName();
         // usersテーブルのレコードを承認済みに更新
-        // final String loginedUsername = SecurityContextHolder.getContext().getAuthentication().getName();
         updateDbService.updateUserVerify(username);
         updateDbService.deleteTable(username);
-        // updateDbService.updateUserVerify(loginedUsername);
 
         return "admin/admin";
     }
