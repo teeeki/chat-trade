@@ -50,7 +50,7 @@ public class AdminController {
             Model model,
             RedirectAttributes redirectAttributes) {
 
-        // Tmp tmp = new Tmp();
+        model.addAttribute("accept", 1);
         Optional<Tmp> tmp = tmpRepository.findById(1);
         String username = tmp.get().getName();
         // usersテーブルのレコードを承認済みに更新
