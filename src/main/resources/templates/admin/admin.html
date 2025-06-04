@@ -10,7 +10,18 @@
 </head>
 
 <body>
-    root
+    <nav class="panel">
+        <div class="panel-heading">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <p class="panel-heading">
+                    管理者サイト<br>
+                    <small>[[${username}]] さんがログイン中</small>
+                </p>
+            </div>
+        </div>
+    </nav>
+
+
     <div th:if="img">
         <div style="width:700px; margin: 50px auto;">
             <img alt="" src="/tmp/document.jpg" style="width: 400px; height: 300px;"></td>

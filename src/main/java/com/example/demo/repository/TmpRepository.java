@@ -9,4 +9,6 @@ import com.example.demo.entity.Tmp;
 public interface TmpRepository extends JpaRepository<Tmp, Integer> {
 
     Optional<Tmp> findById(Integer id);
+
+    void deleteAllByName(String name);
 }

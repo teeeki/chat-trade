@@ -50,10 +50,11 @@ public class ItemSellController {
      * @return
      */
     @GetMapping("/item/sell")
-    public String itemSellForm() {
+    public String itemSellForm(Model model) {
 
         // ユーザ情報を取り出す
         final String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        model.addAttribute("username", username);
         User user = userRepository.findByUsername(username).get();
 
         // is_verifyがtrueなら出品フォームへ
@@ -92,6 +93,7 @@ public class ItemSellController {
 
         // ログイン中のユーザIDを取得
         final String loginedName = SecurityContextHolder.getContext().getAuthentication().getName();
+        model.addAttribute("username", loginedName);
         loginedUser = userRepository.findByUsername(loginedName).get();
         Integer userId = loginedUser.getId();
 

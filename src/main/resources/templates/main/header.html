@@ -1,10 +1,16 @@
 <header>
   <nav class="panel">
-    <p class="panel-heading">
-      furukari<br>
-      <small>[[${username}]] さんがログイン中</small>
-
-    </p>
+    <div class="panel-heading">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h3 style="margin: 0;">furukari</h3>
+          <small>[[${username}]] さんがログイン中</small>
+        </div>
+        <div>
+          <a href="/furukari/logout" class="button" style="margin-right: 100px;">ログアウト</a>
+        </div>
+      </div>
+    </div>
 
     <div class="panel-block">
       <p class="control has-icons-left">
@@ -14,6 +20,8 @@
         </span>
       </p>
     </div>
+
+
 
   </nav>
 </header>
