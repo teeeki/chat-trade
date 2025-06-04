@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +20,10 @@ import org.springframework.web.multipart.MultipartFile;
 public class UserVerifyController {
 
     @GetMapping("/user-verify")
-    public String userVerifyForm() {
+    public String userVerifyForm(Model model) {
+
+        final String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        model.addAttribute("username", username);
         return "user_verify/userVerifyForm";
     }
 

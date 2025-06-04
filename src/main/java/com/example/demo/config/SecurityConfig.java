@@ -12,7 +12,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable())
+                .csrf(csrf -> csrf.disable()) // これないとログイン機能が動作しない
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/furukari", "/furukari/signin", "/furukari/signup").permitAll()
                         .anyRequest().authenticated())

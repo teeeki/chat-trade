@@ -31,6 +31,8 @@ public class AdminController {
     @GetMapping("/admin")
     public String admin(Model model) {
 
+        final String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        model.addAttribute("username", username);
         String path = "src/main/resources/static/tmp/document.jpg";
         Path p = Paths.get(path);
 
@@ -52,9 +54,10 @@ public class AdminController {
         Optional<Tmp> tmp = tmpRepository.findById(1);
         String username = tmp.get().getName();
         // usersテーブルのレコードを承認済みに更新
-        final String loginedUsername = SecurityContextHolder.getContext().getAuthentication().getName();
-        // updateDbService.updateUserVerify(username);
-        updateDbService.updateUserVerify(loginedUsername);
+        // final String loginedUsername = SecurityContextHolder.getContext().getAuthentication().getName();
+        updateDbService.updateUserVerify(username);
+        updateDbService.deleteTable(username);
+        // updateDbService.updateUserVerify(loginedUsername);
 
         return "admin/admin";
     }
