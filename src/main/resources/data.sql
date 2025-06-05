@@ -33,6 +33,22 @@ INSERT INTO items(
         img_path
     )
 VALUES(
+        3,
+        'きのこの山',
+        200,
+        'めっちゃおいしい',
+        'あなたはきのこ派？それともたけのこ派？',
+        '/item_img/きのこの山.png'
+    );
+INSERT INTO items(
+        user_id,
+        name,
+        price,
+        abstract,
+        description,
+        img_path
+    )
+VALUES(
         2,
         'ゼロから作るDeep Learning入門',
         1000,
@@ -66,9 +82,25 @@ INSERT INTO items(
     )
 VALUES(
         3,
-        'きのこの山',
-        200,
-        'めっちゃおいしい',
-        'あなたはきのこ派？それともたけのこ派？',
-        '/item_img/きのこの山.png'
+        'AWS クラウドプラクティショナー',
+        2000,
+        'AWS CLF試験の参考者',
+        'AWS(Amazon Web Services)を活用・構築する知識を持っていることを証明するのがAWS認定です。「AWS認定 クラウドプラクティショナー」は、エンジニアだけでなくマネージャーや営業職など、さまざまなポジションを対象とした新しい試験で、AWSクラウドの知識とスキルを身に付け、全体的な理解を効果的に説明できるようになることが求められます。',
+        '/item_img/AWS.png'
+    );
+INSERT INTO items(
+        user_id,
+        name,
+        price,
+        abstract,
+        description,
+        img_path
+    )
+VALUES(
+        1,
+        'ポテトチップス',
+        2000,
+        'ポテトチップスうすしお味',
+        '【おすすめポイント】4〜5人用ポテトチップス、家族・パーティー用にみんなで「パリッと楽しいひととき」を過ごせる大容量ポテトチップスです。昆布の旨味でじゃがいも本来の素材の味を引き立てた味わいです。',
+        '/item_img/ポテチ.png'
     );
